@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廣告活動</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">首頁</a>
+        <div class="car-owner-item" style="display: none;">
+            <a href="car-owner-center.html">車主中心</a>
+            <a href="advertising-campaign.html">廣告活動</a>
+        </div>
+        <div class="advertiser-item" style="display: none;">
+            <a href="advertiser-dashboard.html">廣告管理</a>
+        </div>
+        <a href="platform-announcements-help.html">平台公告與幫助</a>
+    </div>
+    <div class="main">
+        <h1>廣告活動</h1>
+        <div class="analytics-container">
+            <div class="map-container" id="mapid" style="height: 500px;"></div>
+            <div class="graph-container">
+                <canvas id="impressionsGraph"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var mymap = L.map('mapid').setView([25.0330, 121.5654], 13); // Set view to Taipei
+        // Load OSM tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(mymap);
+
+        // Initialize the chart
+        var ctx = document.getElementById('impressionsGraph').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Impressions',
+                    data: [0, 20, 40, 50, 70, 90],
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

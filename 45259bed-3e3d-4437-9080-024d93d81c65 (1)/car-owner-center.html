@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>車主中心</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">首頁</a>
+        <div class="car-owner-item" style="display: none;">
+            <a href="car-owner-center.html">車主中心</a>
+            <a href="advertising-campaign.html">廣告活動</a>
+        </div>
+        <div class="advertiser-item" style="display: none;">
+            <a href="advertiser-dashboard.html">廣告管理</a>
+        </div>
+        <a href="platform-announcements-help.html">平台公告與幫助</a>
+    </div>
+    <div class="main">
+        <h1>車主中心</h1>
+        <!-- Content -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var userType = localStorage.getItem('userType');
+            var carOwnerItems = document.querySelectorAll('.car-owner-item');
+            var advertiserItems = document.querySelectorAll('.advertiser-item');
+
+            if (userType === 'carOwner') {
+                carOwnerItems.forEach(function(item) { item.style.display = 'block'; });
+                advertiserItems.forEach(function(item) { item.style.display = 'none'; });
+            } else if (userType === 'advertiser') {
+                carOwnerItems.forEach(function(item) { item.style.display = 'none'; });
+                advertiserItems.forEach(function(item) { item.style.display = 'block'; });
+            }
+        });
+    </script>
+</body>
+</html>

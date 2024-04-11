@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廣告商註冊</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">首頁</a>
+        <a href="advertiser-registration.html">廣告商註冊</a>
+        <a href="advertising-campaign.html">廣告活動</a>
+        <a href="platform-announcements-help.html">平台公告與幫助</a>
+    </div>
+    <div class="main">
+        <h1>廣告商註冊</h1>
+        <form>
+            <label for="company-name">Company Name:</label>
+            <input type="text" id="company-name" name="company-name" required>
+            <label for="contact-person">Contact Person:</label>
+            <input type="text" id="contact-person" name="contact-person" required>
+            <label for="contact-details">Contact Details:</label>
+            <input type="text" id="contact-details" name="contact-details" required>
+            <label for="business-license">Upload Business License:</label>
+            <input type="file" id="business-license" name="business-license" required>
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">Agree to Terms and Conditions</label>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

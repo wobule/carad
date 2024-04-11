@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 - 車載廣告平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function setUserType(userType) {
+            localStorage.setItem('userType', userType);
+            updateNav();
+        }
+
+        function updateNav() {
+            const userType = localStorage.getItem('userType');
+            const carOwnerItems = document.querySelectorAll('.car-owner-item');
+            const advertiserItems = document.querySelectorAll('.advertiser-item');
+
+            carOwnerItems.forEach(item => item.style.display = 'none');
+            advertiserItems.forEach(item => item.style.display = 'none');
+
+            if (userType === 'carOwner') {
+                carOwnerItems.forEach(item => item.style.display = 'block');
+            } else if (userType === 'advertiser') {
+                advertiserItems.forEach(item => item.style.display = 'block');
+            }
+        }
+
+        // When the document loads, update the nav based on local storage
+        document.addEventListener('DOMContentLoaded', updateNav);
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">首頁</a>
+        <div class="car-owner-item" style="display: none;">
+            <a href="car-owner-center.html">車主中心</a>
+            <a href="advertising-campaign.html">廣告活動</a>
+        </div>
+        <div class="advertiser-item" style="display: none;">
+            <a href="advertiser-dashboard.html">廣告管理</a>
+        </div>
+        <a href="platform-announcements-help.html">平台公告與幫助</a>
+    </div>
+    <div class="main">
+        <header>
+            <h1>歡迎來到車載廣告平台</h1>
+            <p>這裡簡要介紹商業模式</p>
+        </header>
+        <main>
+            <section>
+                <button onclick="setUserType('carOwner')" class="button">我是車主</button>
+                <button onclick="setUserType('advertiser')" class="button">我是廣告商</button>
+            </section>
+        </main>
+        <footer>
+            <p>平台公告和幫助中心</p>
+        </footer>
+    </div>
+</body>
+</html>
